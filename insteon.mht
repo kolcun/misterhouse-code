@@ -42,7 +42,7 @@ INSTEON_SWITCHLINCRELAY, 28.8A.B7, Basement_Stairs_Bottom, All_Lights
 #             Responder,     Controller,     Options
 #Scenes for crosslink
 SCENE_MEMBER, Basement_Stairs_Top, Basement_Stairs_Bottom, 100%, 0s
-SCENE_MEMBER, Basement_Stairs_Bottom, Basement_Stairs_TOP, 100%, 0s
+SCENE_MEMBER, Basement_Stairs_Bottom, Basement_Stairs_Top, 100%, 0s
 
 
 #Front Hall Lights
@@ -51,13 +51,8 @@ INSTEON_SWITCHLINC, 28.F4.FE, Front_Hall_Hall_Side, All_Lights
 #             Responder,     Controller,     Options
 #Scenes for crosslink
 SCENE_MEMBER, Front_Hall_Hall_Side, Front_Hall_Door_Side, 50%, 2s
-SCENE_MEMBER, Front_Hall_Hall_Side, Front_Door_Keypad_B, 50%, 2s
-
 SCENE_MEMBER, Front_Hall_Door_Side, Front_Hall_Hall_Side, 50%, 2s
-SCENE_MEMBER, Front_Hall_Door_Side, Front_Door_Keypad_B, 50%, 2s
 
-SCENE_MEMBER, Front_Door_Keypad_B, Front_Hall_Hall_Side, 50%, 2s
-SCENE_MEMBER, Front_Door_Keypad_B, Front_Hall_Door_Side, 50%, 2s
 
 #Garage
 INSTEON_IOLINC, 25.2B.F1, Garage_Door_Left, Garage
