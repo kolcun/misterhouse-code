@@ -73,21 +73,21 @@ INSTEON_KEYPADLINCRELAY, 25.6A.AE:06, Front_Door_Keypad_F, Button,
 INSTEON_KEYPADLINCRELAY, 25.6A.AE:07, Front_Door_Keypad_G, Button,
 INSTEON_KEYPADLINCRELAY, 25.6A.AE:08, Front_Door_Keypad_H, Button,
 
-INSTEON_ICONTROLLER, f1, fdsbB, hidden
-INSTEON_ICONTROLLER, f2, fdsbC, hidden
-INSTEON_ICONTROLLER, f3, fdsbD, hidden 
-INSTEON_ICONTROLLER, f4, fdsbE, hidden
-INSTEON_ICONTROLLER, f5, fdsbF, hidden
-INSTEON_ICONTROLLER, f6, fdsbG, hidden
-INSTEON_ICONTROLLER, f7, fdsbH, hidden
+#INSTEON_ICONTROLLER, f1, fdsbB, hidden
+#INSTEON_ICONTROLLER, f2, fdsbC, hidden
+#INSTEON_ICONTROLLER, f3, fdsbD, hidden 
+#INSTEON_ICONTROLLER, f4, fdsbE, hidden
+#INSTEON_ICONTROLLER, f5, fdsbF, hidden
+#INSTEON_ICONTROLLER, f6, fdsbG, hidden
+#INSTEON_ICONTROLLER, f7, fdsbH, hidden
 
-SCENE_MEMBER, Front_Door_Keypad_B, fdsbB, surrogate
-SCENE_MEMBER, Front_Door_Keypad_C, fdsbC, surrogate
-SCENE_MEMBER, Front_Door_Keypad_D, fdsbD, surrogate
-SCENE_MEMBER, Front_Door_Keypad_E, fdsbE, surrogate
-SCENE_MEMBER, Front_Door_Keypad_F, fdsbF, surrogate
-SCENE_MEMBER, Front_Door_Keypad_G, fdsbG, surrogate
-SCENE_MEMBER, Front_Door_Keypad_H, fdsbH, surrogate
+#SCENE_MEMBER, Front_Door_Keypad_B, fdsbB, surrogate
+#SCENE_MEMBER, Front_Door_Keypad_C, fdsbC, surrogate
+#SCENE_MEMBER, Front_Door_Keypad_D, fdsbD, surrogate
+#SCENE_MEMBER, Front_Door_Keypad_E, fdsbE, surrogate
+#SCENE_MEMBER, Front_Door_Keypad_F, fdsbF, surrogate
+#SCENE_MEMBER, Front_Door_Keypad_G, fdsbG, surrogate
+#SCENE_MEMBER, Front_Door_Keypad_H, fdsbH, surrogate
 
 
 #
