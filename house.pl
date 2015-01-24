@@ -31,7 +31,8 @@ if ($state = state_now $Front_Door_Keypad_D) {
 
 
 if ($state = state_now $Upstairs_Landing_Keypad_D){
-	$main_floor_off->set(OFF);
+	print_log("running bed_time on");
+	$bed_time->set(ON);
 }
 
 if ($state = state_now $Upstairs_Landing_Keypad_C){

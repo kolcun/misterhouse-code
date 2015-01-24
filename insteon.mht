@@ -123,9 +123,23 @@ SCENE_MEMBER, Upstairs_Landing_Keypad_Light, Main_Stairs_Bottom, 50%, 2s
 #Scenes Below
 #
 
-INSTEON_ICONTROLLER, 15, main_floor_off
-SCENE_MEMBER, Family_Room_Main_Pot_Lights, main_floor_off, 0%, 0s
-SCENE_MEMBER, Family_Room_Fireplace_Pot_Lights, main_floor_off, 0%, 0s
-SCENE_MEMBER, Family_Room_Window_Pot_Lights, main_floor_off, 0%, 0s
+INSTEON_ICONTROLLER, 15, bed_time
+SCENE_MEMBER, Master_Light, 			bed_time, 100%, 0s
+SCENE_MEMBER, Upstairs_Landing_Keypad_Light, 	bed_time, 0%, 2s
+SCENE_MEMBER, Main_Stairs_Bottom, 		bed_time, 0%, 2s
+SCENE_MEMBER, Living_Room_Pot_Lights, 		bed_time, 0%, 2s
+SCENE_MEMBER, Living_Room_Floor_Light_Left, 	bed_time, 0%, 2s
+SCENE_MEMBER, Living_Room_Floor_Light_Right, 	bed_time, 0%, 2s
+SCENE_MEMBER, Living_Room_Floor_Light_Switch, 	bed_time, 0%, 2s
+SCENE_MEMBER, Family_Room_Main_Pot_Lights, 	bed_time, 0%, 2s
+SCENE_MEMBER, Family_Room_Fireplace_Pot_Lights, bed_time, 0%, 2s
+SCENE_MEMBER, Family_Room_Window_Pot_Lights, 	bed_time, 0%, 2s
+SCENE_MEMBER, Laundry_Room_Lights,	 	bed_time, 0%, 2s
+SCENE_MEMBER, Bookshelf, 			bed_time, 0%, 2s
+SCENE_MEMBER, Upstairs_Hallway, 		bed_time, 0%, 2s
+SCENE_MEMBER, Basement_Stairs_Top, 		bed_time, 0%, 2s
+SCENE_MEMBER, Basement_Stairs_Bottom, 		bed_time, 0%, 2s
+SCENE_MEMBER, Front_Hall_Door_Side, 		bed_time, 0%, 2s
+SCENE_MEMBER, Front_Hall_Hall_Side, 		bed_time, 0%, 2s
 
 
