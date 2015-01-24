@@ -1,0 +1,136 @@
+Format = A
+INSTEON_PLM,   PLM
+
+#Outdoor
+INSTEON_SWITCHLINCRELAY, 2B.2A.B6, Landscape_Lights, Outdoor
+
+#Master Bedroom Lights
+INSTEON_LAMPLINC, 24.0E.48, Master_Light_Mike, All_Lights		#
+INSTEON_LAMPLINC, 24.0F.3C, Master_Light_Diane, All_Lights		#
+
+#Master Bedroom Fan / Light
+INSTEON_FANLINC,      21.69.CD:01,    Master_Light, All_Lights
+INSTEON_FANLINC,      21.69.CD:02,    Master_Fan, Fan
+
+#Living Room
+INSTEON_SWITCHLINC, 28.ED.6E, Living_Room_Pot_Lights, All_Lights
+INSTEON_LAMPLINC, 23.49.F9, Living_Room_Floor_Light_Left, All_Lights
+INSTEON_LAMPLINC, 21.FA.00, Living_Room_Floor_Light_Right, All_Lights
+INSTEON_SWITCHLINC, 29.07.7C, Living_Room_Floor_Light_Switch, All_Lights
+
+#Family Room
+INSTEON_SWITCHLINC, 24.9C.9F, Family_Room_Main_Pot_Lights, All_Lights
+INSTEON_SWITCHLINC, 24.72.38, Family_Room_Fireplace_Pot_Lights, All_Lights
+INSTEON_SWITCHLINC, 24.09.E8, Family_Room_Window_Pot_Lights, All_Lights
+
+#Laundry
+INSTEON_SWITCHLINCRELAY, 28.79.86, Laundry_Room_Lights, All_Lights
+
+#Upstairs Landing
+#Bookshelf
+INSTEON_SWITCHLINC, 2B.B7.96, Bookshelf, All_Lights
+#Outside Office
+INSTEON_SWITCHLINC, 2B.B3.39, Upstairs_Hallway, All_Lights
+
+#Scenes for crosslink
+SCENE_MEMBER, Bookshelf, Upstairs_Hallway, 50%, 2s
+SCENE_MEMBER, Upstairs_Hallway, Bookshelf, 50%, 2s
+
+#Basement Stairs
+INSTEON_SWITCHLINCRELAY, 28.81.9B, Basement_Stairs_Top, All_Lights
+INSTEON_SWITCHLINCRELAY, 28.8A.B7, Basement_Stairs_Bottom, All_Lights
+#             Responder,     Controller,     Options
+#Scenes for crosslink
+SCENE_MEMBER, Basement_Stairs_Top, Basement_Stairs_Bottom, 100%, 0s
+SCENE_MEMBER, Basement_Stairs_Bottom, Basement_Stairs_TOP, 100%, 0s
+
+
+#Front Hall Lights
+INSTEON_SWITCHLINC, 28.F4.E7, Front_Hall_Door_Side, All_Lights
+INSTEON_SWITCHLINC, 28.F4.FE, Front_Hall_Hall_Side, All_Lights
+#             Responder,     Controller,     Options
+#Scenes for crosslink
+SCENE_MEMBER, Front_Hall_Hall_Side, Front_Hall_Door_Side, 50%, 2s
+SCENE_MEMBER, Front_Hall_Hall_Side, Front_Door_Keypad_B, 50%, 2s
+
+SCENE_MEMBER, Front_Hall_Door_Side, Front_Hall_Hall_Side, 50%, 2s
+SCENE_MEMBER, Front_Hall_Door_Side, Front_Door_Keypad_B, 50%, 2s
+
+SCENE_MEMBER, Front_Door_Keypad_B, Front_Hall_Hall_Side, 50%, 2s
+SCENE_MEMBER, Front_Door_Keypad_B, Front_Hall_Door_Side, 50%, 2s
+
+#Garage
+INSTEON_IOLINC, 25.2B.F1, Garage_Door_Left, Garage
+INSTEON_IOLINC, 28.BE.FD, Garage_Door_Right, Garage
+
+#IOLinc Devices
+##INSTEON_IOLINC, 25.2C.B4, IO_Front_Door, IO_Group
+
+#
+# Front Door KeypadLinc - 8 button
+#
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:01, Front_Door_Keypad_Ext_Light, Hidden,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:02, Front_Door_Keypad_B, Button,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:03, Front_Door_Keypad_C, Button,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:04, Front_Door_Keypad_D, Button,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:05, Front_Door_Keypad_E, Button,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:06, Front_Door_Keypad_F, Button,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:07, Front_Door_Keypad_G, Button,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:08, Front_Door_Keypad_H, Button,
+
+INSTEON_ICONTROLLER, f1, fdsbB, hidden
+INSTEON_ICONTROLLER, f2, fdsbC, hidden
+INSTEON_ICONTROLLER, f3, fdsbD, hidden 
+INSTEON_ICONTROLLER, f4, fdsbE, hidden
+INSTEON_ICONTROLLER, f5, fdsbF, hidden
+INSTEON_ICONTROLLER, f6, fdsbG, hidden
+INSTEON_ICONTROLLER, f7, fdsbH, hidden
+
+SCENE_MEMBER, Front_Door_Keypad_B, fdsbB, surrogate
+SCENE_MEMBER, Front_Door_Keypad_C, fdsbC, surrogate
+SCENE_MEMBER, Front_Door_Keypad_D, fdsbD, surrogate
+SCENE_MEMBER, Front_Door_Keypad_E, fdsbE, surrogate
+SCENE_MEMBER, Front_Door_Keypad_F, fdsbF, surrogate
+SCENE_MEMBER, Front_Door_Keypad_G, fdsbG, surrogate
+SCENE_MEMBER, Front_Door_Keypad_H, fdsbH, surrogate
+
+
+#
+# Master Bedroom KeypadLinc
+#
+#INSTEON_KEYPADLINC, 24.15.E3:01, Master_Keypad_A, Hidden,
+##INSTEON_KEYPADLINC, 24.15.E3:02, Master_Keypad_B, Button,
+#INSTEON_KEYPADLINC, 24.15.E3:03, Master_Keypad_C, Button,
+#INSTEON_KEYPADLINC, 24.15.E3:04, Master_Keypad_D, Button,
+#INSTEON_KEYPADLINC, 24.15.E3:05, Master_Keypad_E, Button,
+#INSTEON_KEYPADLINC, 24.15.E3:06, Master_Keypad_F, Button,
+##INSTEON_KEYPADLINC, 24.15.E3:07, Master_Keypad_G, Button,
+##INSTEON_KEYPADLINC, 24.15.E3:08, Master_Keypad_H, Button,
+
+#Main Stairs
+INSTEON_SWITCHLINC, 2B.BA.66, Main_Stairs_Bottom, All_Lights
+
+#
+# Upstairs Landing KeypadLinc - 6 button
+#
+INSTEON_KEYPADLINC, 2B.AC.C3:01, Upstairs_Landing_Keypad_Light, Hidden,
+INSTEON_KEYPADLINC, 2B.AC.C3:03, Upstairs_Landing_Keypad_A, Button,
+INSTEON_KEYPADLINC, 2B.AC.C3:04, Upstairs_Landing_Keypad_B, Button,
+INSTEON_KEYPADLINC, 2B.AC.C3:05, Upstairs_Landing_Keypad_C, Button,
+INSTEON_KEYPADLINC, 2B.AC.C3:06, Upstairs_Landing_Keypad_D, Button,
+
+#Scenes for crosslink
+SCENE_MEMBER, Main_Stairs_Bottom, Upstairs_Landing_Keypad_Light, 50%, 2s
+SCENE_MEMBER, Upstairs_Landing_Keypad_Light, Main_Stairs_Bottom, 50%, 2s
+
+
+#
+#Scenes Below
+#
+
+INSTEON_ICONTROLLER, 15, main_floor_off
+SCENE_MEMBER, Family_Room_Main_Pot_Lights, main_floor_off, 0%, 0s
+SCENE_MEMBER, Family_Room_Fireplace_Pot_Lights, main_floor_off, 0%, 0s
+SCENE_MEMBER, Family_Room_Window_Pot_Lights, main_floor_off, 0%, 0s
+
+
