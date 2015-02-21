@@ -1,44 +1,44 @@
 # Category=Insteon
 
-if ($state = state_now $Family_Room_Main_Pot_Lights) {
-   print_log("FAMILY ROOM MAIN POT LIGHTS: $state");
-   if ($state eq 'on_fast') {
-      print_log("********** ON FAST");
-   } elsif ($state eq 'on') {
-      print_log("********** ON");
-      #$kpl_A->set(ON);
+#if ($state = state_now $Family_Room_Main_Pot_Lights) {
+#   print_log("FAMILY ROOM MAIN POT LIGHTS: $state");
+#   if ($state eq 'on_fast') {
+#      print_log("********** ON FAST");
+#   } elsif ($state eq 'on') {
+#      print_log("********** ON");
+#      #$kpl_A->set(ON);
+#
+#   } elsif ($state eq 'off_fast') {
+#      print_log("********** FAST OFF");
+#   } elsif ($state eq 'off') {
+#      print_log("********** OFF");
+#      #$kpl_A->set(OFF);
+#
+#   } else{
+#      print_log("********** UNKNOWN");
+#   }
+#}
 
-   } elsif ($state eq 'off_fast') {
-      print_log("********** FAST OFF");
-   } elsif ($state eq 'off') {
-      print_log("********** OFF");
-      #$kpl_A->set(OFF);
 
-   } else{
-      print_log("********** UNKNOWN");
-   }
+if ($state = state_now $Upstairs_Landing_Keypad_A){
+	if ($state eq 'on') {
+		$Front_Hall_Hall_Side->set("20%");
+		$Upstairs_Landing_Keypad_A->set(OFF);
+	}
 }
 
-if ($state = state_now $Front_Door_Keypad_D) {
-   print_log("getting status of garage");
-  
-   $Garage_Door_Left->request_status(); 
-   print_log("garage Left: " . $Garage_Door_Left->state_log());
-
-   $Garage_Door_Right->request_status();
-   print_log("garage Right: " . $Garage_Door_Right->state_log());
-}
 
 
 if ($state = state_now $Upstairs_Landing_Keypad_D){
-	print_log("running bed_time on");
-	$bed_time->set(ON);
-}
+	if ($state eq 'on') {
+		print_log("running bed_time_2 on");
+		$Master_Light->set(ON);
+		$bed_time_2->set(ON);
+		$Upstairs_Landing_Keypad_Light->set(OFF,"10s");
+		$Family_Room_Window_Pot_Lights->set(OFF);
+		$Upstairs_Landing_Keypad_D->set(OFF);
+	}
 
-if ($state = state_now $Upstairs_Landing_Keypad_C){
-	$Family_Room_Main_Pot_Lights->set(OFF);
-	$Family_Room_Fireplace_Pot_Lights->set(OFF);
-	$Family_Room_Window_Pot_Lights->set(OFF);
 }
 
 if ($state = state_now $Front_Door_Keypad_E) {
@@ -55,6 +55,43 @@ my $ref = get_set_by $Front_Door_Keypad_E;
       print_log("********** E FAST OFF");
    } elsif ($state eq 'off') {
       print_log("********** E OFF");
+   }
+}
+
+
+if($state = state_now $Front_Door_Keypad_C){
+	print_log("front door button c pressed");
+   if ($state eq 'on_fast') {
+      print_log("********** C ON FAST");
+   } elsif ($state eq 'on') {
+      print_log("********** C ON");
+	print_log("turning button d on");
+	$Garage_Door_Right->request_sensor_status();
+		
+	#this just prints to the log, like so :   [Insteon::IOLinc] received status for $Garage_Door_Rightsensor of: on hops left: 0
+	#not sure how to capture as variable
+	# sensor on = door closed
+	# sensor off = door open
+	$Front_Door_Keypad_D->set(ON);
+   } elsif ($state eq 'off_fast') {
+      print_log("********** C FAST OFF");
+   } elsif ($state eq 'off') {
+      print_log("********** C OFF");
+	print_log("turning button d off");
+	$Front_Door_Keypad_D->set(OFF);
+   }
+}
+
+#Button D Testing
+if ($state = state_now $Front_Door_Keypad_D) {
+   if ($state eq 'on_fast') {
+	print_log("D ON FAST");
+   } elsif ($state eq 'on') {
+	print_log("D ON normal");
+   } elsif ($state eq 'off_fast') {
+	print_log("D OFF FAST");
+   } elsif ($state eq 'off') {
+	print_log("D OFF normal");
    }
 }
 
@@ -108,6 +145,19 @@ if ($state = state_now $Front_Door_Keypad_G) {
    }
 }
 
+#THIS DOES NOT WORK - can't ever seem to trigger based on state_now - except during a rescan - then it seems to show..???
+if ($state = state_now $Garage_Door_Right){
+	print_log("**GARAGE** garge door right - state_now");
+	if ($state eq 'on') {
+		#this means the garage is sensing closed
+		print_log("**GARAGE** garage door right on - sensing closed");
+		
+	} elsif ($state eq 'off') {
+		print_log("**GARAGE** garage door right off - sensing open");
+	}else{
+		print_log("**GARAGE** garage door right other state");
+	}
+}
 #Laundry Lights Trigger
 if ($state = state_now $Laundry_Room_Lights){
 	if ($state eq 'off_fast'){
@@ -122,17 +172,12 @@ if ($state = state_now $Laundry_Room_Lights){
 if ($state = state_now $Basement_Stairs_Top) {
    print_log("BASEMENT STAIRS: $state");
    if ($state eq 'on_fast') {
-      print_log("********** ON FAST");
-		$Laundry_Room_Lights->set(ON);
+	$Laundry_Room_Lights->set(ON);
    } elsif ($state eq 'on') {
-      print_log("********** ON");
    } elsif ($state eq 'off_fast') {
-      print_log("********** FAST OFF");
 	$Laundry_Room_Lights->set(OFF);
    } elsif ($state eq 'off') {
-      print_log("********** OFF");
    } else{
-      print_log("********** UNKNOWN");
    }
 }
 
@@ -150,20 +195,6 @@ if ($state = state_now $Basement_Stairs_Top) {
 #      set $Upstairs_Landing_Keypad_D OFF;
 #   } 
 #}
-
-if ($state = state_now $Upstairs_Landing_Keypad_C) {
-   if ($state eq 'on') {
-      set $All_Lights OFF;
-      set $Upstairs_Landing_Keypad_C OFF;
-   }
-}
-
-if ($state = state_now $Upstairs_Landing_Keypad_B) {
-   if ($state eq 'on') {
-      set $Family_Room_Fireplace_Pot_Lights OFF;
-      set $Upstairs_Landing_Keypad_B OFF;
-   }
-}
 
 
 sub sync_kpl_lights{

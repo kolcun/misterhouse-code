@@ -5,8 +5,8 @@ INSTEON_PLM,   PLM
 INSTEON_SWITCHLINCRELAY, 2B.2A.B6, Landscape_Lights, Outdoor
 
 #Master Bedroom Lights
-INSTEON_LAMPLINC, 24.0E.48, Master_Light_Mike, All_Lights		#
-INSTEON_LAMPLINC, 24.0F.3C, Master_Light_Diane, All_Lights		#
+#INSTEON_LAMPLINC, 24.0E.48, Master_Light_Mike, All_Lights		#
+#INSTEON_LAMPLINC, 24.0F.3C, Master_Light_Diane, All_Lights		#
 
 #Master Bedroom Fan / Light
 INSTEON_FANLINC,      21.69.CD:01,    Master_Light, All_Lights
@@ -64,7 +64,7 @@ INSTEON_IOLINC, 28.BE.FD, Garage_Door_Right, Garage
 #
 # Front Door KeypadLinc - 8 button
 #
-INSTEON_KEYPADLINCRELAY, 25.6A.AE:01, Front_Door_Keypad_Ext_Light, Hidden,
+INSTEON_KEYPADLINCRELAY, 25.6A.AE:01, Front_Door_Keypad_Ext_Light, All_Lights,
 INSTEON_KEYPADLINCRELAY, 25.6A.AE:02, Front_Door_Keypad_B, Button,
 INSTEON_KEYPADLINCRELAY, 25.6A.AE:03, Front_Door_Keypad_C, Button,
 INSTEON_KEYPADLINCRELAY, 25.6A.AE:04, Front_Door_Keypad_D, Button,
@@ -73,21 +73,21 @@ INSTEON_KEYPADLINCRELAY, 25.6A.AE:06, Front_Door_Keypad_F, Button,
 INSTEON_KEYPADLINCRELAY, 25.6A.AE:07, Front_Door_Keypad_G, Button,
 INSTEON_KEYPADLINCRELAY, 25.6A.AE:08, Front_Door_Keypad_H, Button,
 
-#INSTEON_ICONTROLLER, f1, fdsbB, hidden
-#INSTEON_ICONTROLLER, f2, fdsbC, hidden
-#INSTEON_ICONTROLLER, f3, fdsbD, hidden 
-#INSTEON_ICONTROLLER, f4, fdsbE, hidden
-#INSTEON_ICONTROLLER, f5, fdsbF, hidden
-#INSTEON_ICONTROLLER, f6, fdsbG, hidden
-#INSTEON_ICONTROLLER, f7, fdsbH, hidden
+INSTEON_ICONTROLLER, f1, fdsbB, hidden
+INSTEON_ICONTROLLER, f2, fdsbC, hidden
+INSTEON_ICONTROLLER, f3, fdsbD, hidden 
+INSTEON_ICONTROLLER, f4, fdsbE, hidden
+INSTEON_ICONTROLLER, f5, fdsbF, hidden
+INSTEON_ICONTROLLER, f6, fdsbG, hidden
+INSTEON_ICONTROLLER, f7, fdsbH, hidden
 
-#SCENE_MEMBER, Front_Door_Keypad_B, fdsbB, surrogate
-#SCENE_MEMBER, Front_Door_Keypad_C, fdsbC, surrogate
-#SCENE_MEMBER, Front_Door_Keypad_D, fdsbD, surrogate
-#SCENE_MEMBER, Front_Door_Keypad_E, fdsbE, surrogate
-#SCENE_MEMBER, Front_Door_Keypad_F, fdsbF, surrogate
-#SCENE_MEMBER, Front_Door_Keypad_G, fdsbG, surrogate
-#SCENE_MEMBER, Front_Door_Keypad_H, fdsbH, surrogate
+SCENE_MEMBER, Front_Door_Keypad_B, fdsbB, surrogate
+SCENE_MEMBER, Front_Door_Keypad_C, fdsbC, surrogate
+SCENE_MEMBER, Front_Door_Keypad_D, fdsbD, surrogate
+SCENE_MEMBER, Front_Door_Keypad_E, fdsbE, surrogate
+SCENE_MEMBER, Front_Door_Keypad_F, fdsbF, surrogate
+SCENE_MEMBER, Front_Door_Keypad_G, fdsbG, surrogate
+SCENE_MEMBER, Front_Door_Keypad_H, fdsbH, surrogate
 
 
 #
@@ -108,11 +108,21 @@ INSTEON_SWITCHLINC, 2B.BA.66, Main_Stairs_Bottom, All_Lights
 #
 # Upstairs Landing KeypadLinc - 6 button
 #
-INSTEON_KEYPADLINC, 2B.AC.C3:01, Upstairs_Landing_Keypad_Light, Hidden,
+INSTEON_KEYPADLINC, 2B.AC.C3:01, Upstairs_Landing_Keypad_Light, All_Lights,
 INSTEON_KEYPADLINC, 2B.AC.C3:03, Upstairs_Landing_Keypad_A, Button,
 INSTEON_KEYPADLINC, 2B.AC.C3:04, Upstairs_Landing_Keypad_B, Button,
 INSTEON_KEYPADLINC, 2B.AC.C3:05, Upstairs_Landing_Keypad_C, Button,
 INSTEON_KEYPADLINC, 2B.AC.C3:06, Upstairs_Landing_Keypad_D, Button,
+
+INSTEON_ICONTROLLER, e1, ulsbA, hidden
+INSTEON_ICONTROLLER, e2, ulsbB, hidden
+INSTEON_ICONTROLLER, e3, ulsbC, hidden
+INSTEON_ICONTROLLER, e4, ulsbD, hidden
+
+SCENE_MEMBER, Upstairs_Landing_Keypad_A, ulsbA, surrogate
+SCENE_MEMBER, Upstairs_Landing_Keypad_B, ulsbB, surrogate
+SCENE_MEMBER, Upstairs_Landing_Keypad_C, ulsbC, surrogate
+SCENE_MEMBER, Upstairs_Landing_Keypad_D, ulsbD, surrogate
 
 #Scenes for crosslink
 SCENE_MEMBER, Main_Stairs_Bottom, Upstairs_Landing_Keypad_Light, 50%, 2s
@@ -123,23 +133,36 @@ SCENE_MEMBER, Upstairs_Landing_Keypad_Light, Main_Stairs_Bottom, 50%, 2s
 #Scenes Below
 #
 
-INSTEON_ICONTROLLER, 15, bed_time
-SCENE_MEMBER, Master_Light, 			bed_time, 100%, 0s
-SCENE_MEMBER, Upstairs_Landing_Keypad_Light, 	bed_time, 0%, 2s
-SCENE_MEMBER, Main_Stairs_Bottom, 		bed_time, 0%, 2s
-SCENE_MEMBER, Living_Room_Pot_Lights, 		bed_time, 0%, 2s
-SCENE_MEMBER, Living_Room_Floor_Light_Left, 	bed_time, 0%, 2s
-SCENE_MEMBER, Living_Room_Floor_Light_Right, 	bed_time, 0%, 2s
-SCENE_MEMBER, Living_Room_Floor_Light_Switch, 	bed_time, 0%, 2s
-SCENE_MEMBER, Family_Room_Main_Pot_Lights, 	bed_time, 0%, 2s
-SCENE_MEMBER, Family_Room_Fireplace_Pot_Lights, bed_time, 0%, 2s
-SCENE_MEMBER, Family_Room_Window_Pot_Lights, 	bed_time, 0%, 2s
-SCENE_MEMBER, Laundry_Room_Lights,	 	bed_time, 0%, 2s
-SCENE_MEMBER, Bookshelf, 			bed_time, 0%, 2s
-SCENE_MEMBER, Upstairs_Hallway, 		bed_time, 0%, 2s
-SCENE_MEMBER, Basement_Stairs_Top, 		bed_time, 0%, 2s
-SCENE_MEMBER, Basement_Stairs_Bottom, 		bed_time, 0%, 2s
-SCENE_MEMBER, Front_Hall_Door_Side, 		bed_time, 0%, 2s
-SCENE_MEMBER, Front_Hall_Hall_Side, 		bed_time, 0%, 2s
+#why are window pot lights not responding
+#why are main floor hallway pot lights turning on to 100%
+
+INSTEON_ICONTROLLER, 35, bed_time_2
+#SCENE_MEMBER, Master_Light, 			bed_time_2, 100%, 0s
+#SCENE_MEMBER, Upstairs_Landing_Keypad_Light, 	bed_time_2, 0%, 4s
+SCENE_MEMBER, Main_Stairs_Bottom, 		bed_time_2, 0%, 4s
+SCENE_MEMBER, Living_Room_Pot_Lights, 		bed_time_2, 0%, 4s
+SCENE_MEMBER, Living_Room_Floor_Light_Left, 	bed_time_2, 0%, 4s
+SCENE_MEMBER, Living_Room_Floor_Light_Right, 	bed_time_2, 0%, 4s
+SCENE_MEMBER, Living_Room_Floor_Light_Switch, 	bed_time_2, 0%, 4s
+SCENE_MEMBER, Family_Room_Main_Pot_Lights, 	bed_time_2, 0%, 4s
+SCENE_MEMBER, Family_Room_Fireplace_Pot_Lights, bed_time_2, 0%, 4s
+SCENE_MEMBER, Family_Room_Window_Pot_Lights, 	bed_time_2, 0%, 4s
+SCENE_MEMBER, Laundry_Room_Lights,	 	bed_time_2, 0%, 4s
+SCENE_MEMBER, Bookshelf, 			bed_time_2, 0%, 4s
+SCENE_MEMBER, Upstairs_Hallway, 		bed_time_2, 0%, 4s
+SCENE_MEMBER, Basement_Stairs_Top, 		bed_time_2, 0%, 4s
+SCENE_MEMBER, Basement_Stairs_Bottom, 		bed_time_2, 0%, 4s
+SCENE_MEMBER, Front_Hall_Door_Side, 		bed_time_2, 0%, 4s
+SCENE_MEMBER, Front_Hall_Hall_Side, 		bed_time_2, 0%, 4s
+
+
+#Living room floor lights - control both floor lamps together
+INSTEON_ICONTROLLER, 45, Living_Room_Floor_Lights
+SCENE_MEMBER, Living_Room_Floor_Light_Left,	Living_Room_Floor_Lights, 100%, 0.5s
+SCENE_MEMBER, Living_Room_Floor_Light_Right,	Living_Room_Floor_Lights, 100%, 0.5s
+
+#link these floor lamps to the light switch - which has no direct control of them.
+SCENE_MEMBER, Living_Room_Floor_Light_Left, 	Living_Room_Floor_Light_Switch, 100%, 0.5s
+SCENE_MEMBER, Living_Room_Floor_Light_Right, 	Living_Room_Floor_Light_Switch, 100%, 0.5s
 
 
