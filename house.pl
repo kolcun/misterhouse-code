@@ -51,6 +51,18 @@ my $ref = get_set_by $Front_Door_Keypad_E;
       print_log("********** E ON FAST");
    } elsif ($state eq 'on') {
       print_log("********** E ON");
+
+$io_device_sensor = new Insteon::IOLinc_sensor($Garage_Door_Right);
+if ($io_device_sensor->state eq OFF){
+    print_log("Garage door right - sensor is off");
+}elsif ($io_device_sensor->state eq OFF){
+    print_log("Garage door right - sensor is on");
+}else{
+    print_log("Garage door right - sensor unknown");
+}
+
+notify_pushover("Button E on","Button E notification test");
+
    } elsif ($state eq 'off_fast') {
       print_log("********** E FAST OFF");
    } elsif ($state eq 'off') {
@@ -58,6 +70,18 @@ my $ref = get_set_by $Front_Door_Keypad_E;
    }
 }
 
+#Front door Keypad Button B
+if ($state = state_now $Front_Door_Keypad_B) {
+   if ($state eq 'on_fast') {
+	print_log("Button B: on fast - sending pushover notification");
+	notify_pushover("Button B","Button B notification test");
+   } elsif ($state eq 'on') {
+	print_log("Button B: Was turned on by:" . $Front_Door_Keypad_B->get_set_by());
+   } elsif ($state eq 'off_fast') {
+   } elsif ($state eq 'off') {
+	print_log("Button B: Was turned off by:" . $Front_Door_Keypad_B->get_set_by());
+   }
+}
 
 if($state = state_now $Front_Door_Keypad_C){
 	print_log("front door button c pressed");
@@ -73,6 +97,8 @@ if($state = state_now $Front_Door_Keypad_C){
 	# sensor on = door closed
 	# sensor off = door open
 	$Front_Door_Keypad_D->set(ON);
+
+	$Front_Door_Keypad_B->set(ON, "button_c");
    } elsif ($state eq 'off_fast') {
       print_log("********** C FAST OFF");
    } elsif ($state eq 'off') {
