@@ -2,11 +2,13 @@ Format = A
 INSTEON_PLM,   PLM
 
 #Outdoor
-INSTEON_SWITCHLINCRELAY, 2B.2A.B6, Landscape_Lights, Outdoor
+INSTEON_SWITCHLINCRELAY, 2B.2A.B6, Landscape_Lights, All_Lights|Outdoor
+INSTEON_SWITCHLINCRELAY, 32.81.93, Pool_Gas_Heater, All_Lights|Outdoor
+INSTEON_SWITCHLINCRELAY, 41.8D.81, Pool_Light, All_Lights|Outdoor
 
 #Master Bedroom Lights
-#INSTEON_LAMPLINC, 24.0E.48, Master_Light_Mike, All_Lights		#
-#INSTEON_LAMPLINC, 24.0F.3C, Master_Light_Diane, All_Lights		#
+INSTEON_LAMPLINC, 24.0E.48, Master_Light_Mike, All_Lights		#
+INSTEON_LAMPLINC, 24.0F.3C, Master_Light_Diane, All_Lights		#
 
 #Master Bedroom Fan / Light
 INSTEON_FANLINC,      21.69.CD:01,    Master_Light, All_Lights
@@ -18,13 +20,21 @@ INSTEON_LAMPLINC, 23.49.F9, Living_Room_Floor_Light_Left, All_Lights
 INSTEON_LAMPLINC, 21.FA.00, Living_Room_Floor_Light_Right, All_Lights
 INSTEON_SWITCHLINC, 29.07.7C, Living_Room_Floor_Light_Switch, All_Lights
 
+#Bathroom Foyer
+INSTEON_SWITCHLINC, 38.90.6B, Bathroom_Foyer, All_Lights
+
+#Powder Room
+INSTEON_SWITCHLINC, 3C.F9.83, Powder_Room_Sconce, All_Lights
+INSTEON_SWITCHLINC, 3C.E2.D8, Powder_Room, All_Lights
+
 #Family Room
 INSTEON_SWITCHLINC, 24.9C.9F, Family_Room_Main_Pot_Lights, All_Lights
 INSTEON_SWITCHLINC, 24.72.38, Family_Room_Fireplace_Pot_Lights, All_Lights
 INSTEON_SWITCHLINC, 24.09.E8, Family_Room_Window_Pot_Lights, All_Lights
 
 #Laundry
-INSTEON_SWITCHLINCRELAY, 28.79.86, Laundry_Room_Lights, All_Lights
+INSTEON_SWITCHLINCRELAY, 28.79.86, Laundry_Room_Lights, All_Lights|Basement
+INSTEON_SWITCHLINC, 3C.E1.94, Laundry_Room_Hallway, All_Lights|Basement
 
 #Upstairs Landing
 #Bookshelf
@@ -55,11 +65,18 @@ SCENE_MEMBER, Front_Hall_Door_Side, Front_Hall_Hall_Side, 50%, 2s
 
 
 #Garage
-INSTEON_IOLINC, 25.2B.F1, Garage_Door_Left, Garage
-INSTEON_IOLINC, 28.BE.FD, Garage_Door_Right, Garage
+INSTEON_IOLINC, 25.2B.F1, Garage_Door_Left, Sensors|Garage
+CODE, $Garage_Door_Left_Sensor = new Insteon::IOLinc_sensor($Garage_Door_Left);
+CODE, $Garage_Door_Left_Door = new Insteon::IOLinc_door($Garage_Door_Left);
+
+INSTEON_IOLINC, 28.BE.FD, Garage_Door_Right, Sensors|Garage
+CODE, $Garage_Door_Right_Sensor = new Insteon::IOLinc_sensor($Garage_Door_Right);
+CODE, $Garage_Door_Right_Door = new Insteon::IOLinc_door($Garage_Door_Right);
+
 
 #IOLinc Devices
-##INSTEON_IOLINC, 25.2C.B4, IO_Front_Door, IO_Group
+INSTEON_IOLINC, 25.2C.B4, Awning, All_Lights|Outdoor
+
 
 #
 # Front Door KeypadLinc - 8 button
@@ -91,16 +108,23 @@ SCENE_MEMBER, Front_Door_Keypad_H, fdsbH, surrogate
 
 
 #
-# Master Bedroom KeypadLinc
+# Master Bedroom KeypadLinc - 6 button
 #
-#INSTEON_KEYPADLINC, 24.15.E3:01, Master_Keypad_A, Hidden,
-##INSTEON_KEYPADLINC, 24.15.E3:02, Master_Keypad_B, Button,
-#INSTEON_KEYPADLINC, 24.15.E3:03, Master_Keypad_C, Button,
-#INSTEON_KEYPADLINC, 24.15.E3:04, Master_Keypad_D, Button,
-#INSTEON_KEYPADLINC, 24.15.E3:05, Master_Keypad_E, Button,
-#INSTEON_KEYPADLINC, 24.15.E3:06, Master_Keypad_F, Button,
-##INSTEON_KEYPADLINC, 24.15.E3:07, Master_Keypad_G, Button,
-##INSTEON_KEYPADLINC, 24.15.E3:08, Master_Keypad_H, Button,
+INSTEON_KEYPADLINCRELAY, 24.15.E3:01, Master_Keypad_Light, Button,
+INSTEON_KEYPADLINCRELAY, 24.15.E3:03, Master_Keypad_A, Button,
+INSTEON_KEYPADLINCRELAY, 24.15.E3:04, Master_Keypad_B, Button,
+INSTEON_KEYPADLINCRELAY, 24.15.E3:05, Master_Keypad_C, Button,
+INSTEON_KEYPADLINCRELAY, 24.15.E3:06, Master_Keypad_D, Button,
+
+INSTEON_ICONTROLLER, g1, mkA, hidden
+INSTEON_ICONTROLLER, g2, mkB, hidden
+INSTEON_ICONTROLLER, g3, mkC, hidden
+INSTEON_ICONTROLLER, g4, mkD, hidden
+
+SCENE_MEMBER, Master_Keypad_A, mkA, surrogate
+SCENE_MEMBER, Master_Keypad_B, mkB, surrogate
+SCENE_MEMBER, Master_Keypad_C, mkC, surrogate
+SCENE_MEMBER, Master_Keypad_D, mkD, surrogate
 
 #Main Stairs
 INSTEON_SWITCHLINC, 2B.BA.66, Main_Stairs_Bottom, All_Lights
@@ -164,5 +188,27 @@ SCENE_MEMBER, Living_Room_Floor_Light_Right,	Living_Room_Floor_Lights, 100%, 0.5
 #link these floor lamps to the light switch - which has no direct control of them.
 SCENE_MEMBER, Living_Room_Floor_Light_Left, 	Living_Room_Floor_Light_Switch, 100%, 0.5s
 SCENE_MEMBER, Living_Room_Floor_Light_Right, 	Living_Room_Floor_Light_Switch, 100%, 0.5s
+
+#test scene for the iolinc garage door testing
+#INSTEON_ICONTROLLER, 50, iolinc_test_scene, testing
+#SCENE_MEMBER, testing_iolinc, iolinc_test_scene, 100%, 0s
+
+#Mike Garage
+INSTEON_ICONTROLLER, 51, Garage_Mike, Garage
+SCENE_MEMBER, Garage_Door_Left, Garage_Mike, 100%, 0s
+
+#Diane Garage
+INSTEON_ICONTROLLER, 52, Garage_Diane, Garage
+SCENE_MEMBER, Garage_Door_Right, Garage_Diane, 100%, 0s
+
+#keypad to Mike garage door
+SCENE_MEMBER, Garage_Door_Left, Front_Door_Keypad_H, 100%, 0s
+
+#keypad to Diane Garage door
+SCENE_MEMBER, Garage_Door_Right, Front_Door_Keypad_G, 100%, 0s
+
+#cross link the fan module light, and the keypad master on switch
+SCENE_MEMBER, Master_Light, Master_Keypad_Light, 100%, 0s
+SCENE_MEMBER, Master_Keypad_Light, Master_Light, 100%, 0s
 
 
