@@ -113,27 +113,37 @@ if (state_changed $Garage_Door_Right_Door) {
 #}
 
 
+###
+## Timers
+###
+
 #10 min exterior light on on_fast
 my $extLight_Timer = new Timer;
 if ($state = state_now $Front_Door_Keypad_Ext_Light) {
-#if ($state = state_now $Front_Door_Keypad_B) {
    if ($state eq 'on_fast') {
-      #print_log("********* EXT LIGHT timer started");
 	notify_pushover("Outside Light","Outside Light Timer 10min");
+	$Front_Door_Keypad_B->set(ON);
 	$Front_Door_Keypad_Ext_Light->set(ON);
-      set $extLight_Timer 600;
-	#$Front_Door_Keypad_B->set(OFF);
-   } else {
-      set $extLight_Timer 0;
+	$extLight_Timer->set(600);
    }
 }
 
 if (expired $extLight_Timer) {
 	notify_pushover("Outside Light","Outside Light Timer expired");
-   $Front_Door_Keypad_Ext_Light->set(OFF);
-   #print_log("Ext Light  Timer expired, turning light off.");
-   #$Front_Door_Keypad_B->set(OFF);
+  	$Front_Door_Keypad_Ext_Light->set(OFF);
+	$Front_Door_Keypad_B->set(OFF);
 }
+
+#Powder Room Timer - turn off lights if left on for 20min
+my $powderRoomTimer = new Timer;
+if ('on' eq state_now $Powder_Room_Sconce || 'on' eq state_now $Powder_Room) {
+	$powderRoomTimer->set(1200);
+}  
+if (expired $powderRoomTimer) {
+	$Powder_Room_Sconce->set(OFF, "10s");
+	$Powder_Room->set(OFF, "10s");
+}
+
 
 #Laundry Lights Trigger
 if ($state = state_now $Laundry_Room_Lights){

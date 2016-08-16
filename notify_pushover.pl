@@ -36,6 +36,8 @@ sub notify_pushover {
         print_log("Sending notification to Pushover") if $Debug{pushover};
 		
 	my $url = "https://api.pushover.net/1/messages.json";
+
+	print_log("pushover:  title: $title, text: $text");
 	
 	my $ua = LWP::UserAgent->new();  
 	my $req = POST $url, [ 
