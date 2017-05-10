@@ -17,15 +17,20 @@ if ($state = state_now $Pool_Gas_Heater){
         }
 }
 
+
 #turn pool heater off - in case it gets forgotten
-if (time_now("21:30")) {
-	$Pool_Gas_Heater->set(OFF);	
-}elsif (time_now("22:30")) {
+if (time_now("21:30") && $Pool_Gas_Heater->state() eq 'on') {
+	$Pool_Gas_Heater->set(OFF);
+	notify_pushover("Pool Heater", "Turning off for evening");
+}elsif (time_now("22:30") && $Pool_Gas_Heater->state() eq 'on') {
         $Pool_Gas_Heater->set(OFF);
-}elsif (time_now("23:45")) {
+	notify_pushover("Pool Heater", "Turning off for evening");
+}elsif (time_now("23:45") && $Pool_Gas_Heater->state() eq 'on') {
         $Pool_Gas_Heater->set(OFF);
-}elsif (time_now("01:00")) {
+	notify_pushover("Pool Heater", "Turning off for evening");
+}elsif (time_now("01:00") && $Pool_Gas_Heater->state() eq 'on') {
         $Pool_Gas_Heater->set(OFF);
+	notify_pushover("Pool Heater", "Turning off for evening");
 }
 
 
@@ -53,16 +58,16 @@ if ($state = state_now $Upstairs_Landing_Keypad_D){
 
 ## Garage Door - CODE lines in the mht file create the _door and _sensor objects
 #If open at 9pm close Mike garage door
-if (time_now("21:00") && $Garage_Door_Left_Door->{state} eq 'open'){
-	notify_pushover("Garage - Mike", "Was open, so closing at 9pm");
-	$Garage_Mike->set(OFF);
-}
+#if (time_now("21:00") && $Garage_Door_Left_Door->{state} eq 'open'){
+#	notify_pushover("Garage - Mike", "Was open, so closing at 9pm");
+#	$Garage_Mike->set(OFF);
+#}
 
 #If open at 9pm close Diane garage door
-if (time_now("21:00") && $Garage_Door_Right_Door->{state} eq 'open'){
-        notify_pushover("Garage - Diane", "Was open, so closing at 9pm");
-        $Garage_Diane->set(OFF);
-}
+#if (time_now("21:00") && $Garage_Door_Right_Door->{state} eq 'open'){
+#        notify_pushover("Garage - Diane", "Was open, so closing at 9pm");
+#        $Garage_Diane->set(OFF);
+#}
 
 #Notify on Mike garage door state change
 if (state_changed $Garage_Door_Left_Door) {
@@ -156,7 +161,6 @@ if ($state = state_now $Laundry_Room_Lights){
         }
 }
 
-
 if ($state = state_now $Basement_Stairs_Top) {
    if ($state eq 'on_fast') {
 	$Laundry_Room_Lights->set(ON);
@@ -168,6 +172,19 @@ if ($state = state_now $Basement_Stairs_Top) {
    } else{
    }
 }
+
+#Laundry Room Timer - turn off lights if left on for 30min
+my $laundryRoomTimer = new Timer;
+if ($Laundry_Room_Lights->state_now() eq 'on' || $Laundry_Room_Hallway->state_now() eq 'on') {
+        $laundryRoomTimer->set(1800);
+	#notify_pushover("Laundry Timer", "set on");
+}
+if (expired $laundryRoomTimer) {
+	#notify_pushover("Laundry Timer", "expired");
+        $Laundry_Room_Lights->set(OFF);
+        $Laundry_Room_Hallway->set(OFF);
+}
+
 
 #sub sync_kpl_lights{
 #    my ($ref_light, $kpl_scene) = @_;
